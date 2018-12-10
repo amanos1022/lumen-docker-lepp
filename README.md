@@ -31,7 +31,7 @@ QUEUE_DRIVER=sync
 
 4. Run composer install:
 ```
-docker exec -it my-api-php sh -c "composer install"
+docker exec -it my-api-php sh -c "cd /app && composer install"
 ```
 
 5. Enable Nginx Conf (disabled initially so container creation succeeds):
