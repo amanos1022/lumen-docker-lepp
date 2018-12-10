@@ -13,7 +13,6 @@ services:
   php:
     build: ./php
     container_name: 'my-api-php'
-    working_dir: '/app'
     volumes:
       - './app:/app'
       - './logs/php:/var/log/php'
