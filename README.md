@@ -1,5 +1,7 @@
 # Lumen, Docker Development Environment
-This repo is an example of how you can setup docker environment for Lumen using docker-compose.
+This repo is an example of how you can setup a development environment for Lumen using docker-compose.
+
+**DO NOT USE THIS IN PRODUCTION!!**
 
 1. Clone Lumen Git Repo into app directory
 ```
@@ -36,7 +38,7 @@ docker exec -it my-api-php sh -c "cd /app && composer install"
 
 5. Enable Nginx Conf (disabled initially so container creation succeeds):
 Move `nginx/conf.d/my-api.conf.disabled` to `nginx/conf.d/my-api.conf`
-reload nginx container
+reload nginx in container
 ```
 docker exec -it my-api-nginx bash -c "service nginx reload"
 ```
