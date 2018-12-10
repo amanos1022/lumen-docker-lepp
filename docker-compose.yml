@@ -1,0 +1,32 @@
+version: '3.5'
+
+services:
+  nginx:
+    image: nginx
+    container_name: 'my-api-nginx'
+    volumes:
+      - './app:/app'
+      - './logs/nginx:/var/log/nginx'
+      - './nginx/conf.d:/etc/nginx/conf.d'
+    ports:
+      - "80:80"
+  php:
+    build: ./php
+    container_name: 'my-api-php'
+    working_dir: '/app'
+    volumes:
+      - './app:/app'
+      - './logs/php:/var/log/php'
+      - './php/conf.d:/usr/local/php/conf.d'
+    links:
+      - psql
+  psql:
+    image: postgres
+    container_name: 'my-api-postgres'
+    volumes:
+      - './data/postgres:/var/lib/postgresql/data'
+      - './db-dumps:/db-dumps'
+    environment:
+      POSTGRES_PASSWORD: '123'
+      POSTGRES_DB: 'myapi'
+  
